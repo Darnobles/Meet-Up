@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Darnobles/Meet-Up.git/static/css/main.073c9b0a.css",
+    "main.js": "/Darnobles/Meet-Up.git/static/js/main.d1ec9dbb.js",
+    "static/js/787.4b564826.chunk.js": "/Darnobles/Meet-Up.git/static/js/787.4b564826.chunk.js",
+    "service-worker.js": "/Darnobles/Meet-Up.git/service-worker.js",
+    "static/media/logo.svg": "/Darnobles/Meet-Up.git/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
+    "index.html": "/Darnobles/Meet-Up.git/index.html",
+    "main.073c9b0a.css.map": "/Darnobles/Meet-Up.git/static/css/main.073c9b0a.css.map",
+    "main.d1ec9dbb.js.map": "/Darnobles/Meet-Up.git/static/js/main.d1ec9dbb.js.map",
+    "787.4b564826.chunk.js.map": "/Darnobles/Meet-Up.git/static/js/787.4b564826.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d1ec9dbb.js"
+  ]
+}
