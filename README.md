@@ -86,3 +86,7 @@ Scenario 1: Show a chart with the number of upcoming events in each city.
 * Given: "number of events" box is displayed.
 * When: user types how many events he/she would like to see.
 * Then: chart visulizing event details will display.
+
+### Severless Functions in Meet-Up
+
+Severless functions will be used to obtian access tokens from the authorization server (Google OAuth Provider). Once the access code is granted and a request is made to the protected resoure (Google Calendar API) for information on events the events are then returned to the user.
