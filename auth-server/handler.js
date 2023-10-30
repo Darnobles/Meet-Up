@@ -76,13 +76,26 @@ module.exports.getAccessToken = async (event) => {
 
 module.exports.getCalendarEvents = async (event) => {
 
-  const oAuth2Client = new google.auth.OAuth2(
-    CLIENT_ID,
-    CLIENT_SECRET,
-    redirect_uris[0]
-    );
+//   const oAuth2Client = new google.auth.OAuth2(
+//     CLIENT_ID,
+//     CLIENT_SECRET,
+//     redirect_uris[0]
+//     );
     
-  const accessToken = decodeURIComponent(`${event.pathParameters.access_token}`);
+// let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+
+// app.use(cors({
+// origin: (origin, callback) => {
+// if(!origin) return callback(null, true);
+// if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+// let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+// return callback(new Error(message ), false);
+// }
+// return callback(null, true);
+// }
+// }));
+
+  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token });
 
   return new Promise((resolve, reject) => {
@@ -104,14 +117,14 @@ module.exports.getCalendarEvents = async (event) => {
       }
     )
 
-  .then((response) => {
+  .then((results) => {
     return {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true,
       },
-      body: JSON.stringify({events:response.data.items}),
+      body: JSON.stringify({events:results.data.items}),
     };
   })
   .catch((error) => {
