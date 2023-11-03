@@ -15,6 +15,13 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 
 module.exports.getAuthURL = async () => {
+  
+  const oAuth2Client = new google.auth.OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    redirect_uris[0]
+  );
+
   /**
    *
    * Scopes array is passed to the `scope` option. 
@@ -38,6 +45,13 @@ module.exports.getAuthURL = async () => {
 };
 
 module.exports.getAccessToken = async (event) => {
+
+  const oAuth2Client = new google.auth.OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    redirect_uris[0]
+  );
+
   // Decode authorization code extracted from the URL query
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
@@ -75,6 +89,12 @@ module.exports.getAccessToken = async (event) => {
 };
 
 module.exports.getCalendarEvents = async (event) => {
+
+  const oAuth2Client = new google.auth.OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    redirect_uris[0]
+  );
 
 //   const oAuth2Client = new google.auth.OAuth2(
 //     CLIENT_ID,
