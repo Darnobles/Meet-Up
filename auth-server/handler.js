@@ -15,12 +15,6 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 
 module.exports.getAuthURL = async () => {
-  
-  const oAuth2Client = new google.auth.OAuth2(
-    CLIENT_ID,
-    CLIENT_SECRET,
-    redirect_uris[0]
-  );
 
   /**
    *
@@ -45,12 +39,6 @@ module.exports.getAuthURL = async () => {
 };
 
 module.exports.getAccessToken = async (event) => {
-
-  const oAuth2Client = new google.auth.OAuth2(
-    CLIENT_ID,
-    CLIENT_SECRET,
-    redirect_uris[0]
-  );
 
   // Decode authorization code extracted from the URL query
   const code = decodeURIComponent(`${event.pathParameters.code}`);
@@ -90,31 +78,6 @@ module.exports.getAccessToken = async (event) => {
 
 module.exports.getCalendarEvents = async (event) => {
 
-  const oAuth2Client = new google.auth.OAuth2(
-    CLIENT_ID,
-    CLIENT_SECRET,
-    redirect_uris[0]
-  );
-
-//   const oAuth2Client = new google.auth.OAuth2(
-//     CLIENT_ID,
-//     CLIENT_SECRET,
-//     redirect_uris[0]
-//     );
-    
-// let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
-
-// app.use(cors({
-// origin: (origin, callback) => {
-// if(!origin) return callback(null, true);
-// if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
-// let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-// return callback(new Error(message ), false);
-// }
-// return callback(null, true);
-// }
-// }));
-
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token });
 
@@ -126,32 +89,31 @@ module.exports.getCalendarEvents = async (event) => {
         auth: oAuth2Client,
         timeMin: new Date().toISOString(),
         singleEvents: true,
-        orderBy: "startTime",
+        orderBy: "startTime"
       },
       (error, response) => {
         if (error) {
-          reject(error);
+          reject(error)
         } else {
           resolve(response);
         }
       }
-    )
+    )})
 
-  .then((results) => {
+  .then(results => {
     return {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Credentials': true
       },
-      body: JSON.stringify({events:results.data.items}),
-    };
+      body: JSON.stringify({events:results.data.items})
+    }
   })
-  .catch((error) => {
+  .catch(error => {
     return {
       statusCode: 500,
-      body: JSON.stringify(error),
+      body: JSON.stringify(error)
     };
   });
-});
 }
