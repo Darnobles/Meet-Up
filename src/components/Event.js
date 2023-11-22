@@ -1,6 +1,13 @@
 const Event = () => {
     return (
-        <li></li>
+    <div>
+        <li id="event"
+            title=""
+            data-location=""
+            data-start-time="">
+        </li>
+        <button id="show details"></button>
+    </div>
     );
 }
 
