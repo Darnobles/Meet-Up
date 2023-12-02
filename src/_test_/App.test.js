@@ -10,13 +10,16 @@ describe('<App /> component', () => {
   })
 
     test('renders list of events', () => {
-        const AppDOM = render(<App />).container.firstChild;
         expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
       });
     
       test('render CitySearch', () => {
         expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
       });
+
+      test('render NumberOfEvents', () => {
+        expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument();
+      })
 });
 
 describe('<App /> integration', () => {
