@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const NumberOfEvents = () => {
+const NumberOfEvents = ({allLocations, setCurrentCity}) => {
 
     const [number, setNumber] = useState(32);
 
