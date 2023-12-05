@@ -32,7 +32,7 @@ const App = () => {
     const allEvents = await getEvents();
     const filteredEvents = currentCity === "See all cities" ?
     allEvents :
-    allEvents.filter(event => event.location === currentCity)
+    allEvents.filter((event) => event.location === currentCity)
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }
@@ -40,7 +40,11 @@ const App = () => {
   return (
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity}/>
-      <NumberOfEvents  allLocations={allLocations} setCurrentCity={setCurrentCity} events={events}/>
+      <NumberOfEvents  
+      allLocations={allLocations} 
+      setCurrentCity={setCurrentCity} 
+      events={events} 
+      updateEvents={updateEvents}/>
       <EventList events={events} />
     </div>
   );
