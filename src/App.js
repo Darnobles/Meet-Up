@@ -12,9 +12,21 @@ const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
 
+  updateEvents = (location, eventCount) => {
+    const currentLocation = (location !== undefined) ? location: this.state.currentLocation;
+    const eventNumber = (eventCount !== undefined) ? eventCount : this.state.numberOfEvent
+  };
+
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+    // This will act like componentDidMount
+
+    return () => {
+
+      // This will act like componentWillUnmount
+      // Perform any cleanup here
+    };
+  }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();

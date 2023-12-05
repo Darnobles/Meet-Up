@@ -9,6 +9,19 @@ const NumberOfEvents = ({allLocations, setCurrentCity}) => {
         setNumber(value);
     }
 
+    const handleInputChange = (event) => {
+        const value = event.target.value;
+        this.setState({
+        eventNumber: value
+        });
+        this.props.updateEvents(undefined, value);
+        }
+
+    const handleNumberChange = (event) => {
+        handleInputChanged(event);
+        handleInputChange(event);
+    };
+
     return(
         <div>
             <label htmlFor="number-of-events-input">Number of Events:</label>
@@ -17,7 +30,7 @@ const NumberOfEvents = ({allLocations, setCurrentCity}) => {
              id="number-of-events-input"
              className="number-of-events-input"
              value={number}
-             onChange={handleInputChanged}
+             onChange={handleNumberChange}
             />
         </div>
     )
