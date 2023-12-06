@@ -12,9 +12,21 @@ const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
 
-  const updateEvents = (location, eventCount) => {
+  updateEvents = (location, eventCount) => {
     const currentLocation = (location !== undefined) ? location: this.state.currentLocation;
-    const eventNumber = (eventCount !== undefined) ? eventCount : this.state.numberOfEvent
+    const eventNumber = (eventCount !== undefined) ? eventCount : this.state.numberOfEvent;
+    getEvents().then((events) => {
+      let locationEvents = (currentLocation === 'all') ?
+        events :
+        events.filter((event) => event.location === currentLocation);
+      locationEvents = locationEvents.slice(0, eventNumber);
+      
+      this.setState({
+        events: locationEvents,
+        numberOfEvents: eventNumber,
+        currentLocation
+      });
+    });
   };
 
   useEffect(() => {
