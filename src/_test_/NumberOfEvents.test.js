@@ -4,31 +4,26 @@ import userEvent from '@testing-library/user-event';
 
 describe('<NumberOfEvents /> component', () => {
 
-    let NumberOfEventsComponent;
-    beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents/>);
+    let NumberWrapper;
+    
+    beforeAll(() => {
+    NumberWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
     });
-
-    test('renders number of events text input', () => {
-        const numberTextBox =NumberOfEventsComponent.queryByRole('textbox');
-        expect(numberTextBox).toBeInTheDocument();
-        expect(numberTextBox).toHaveClass('number-of-events-input');
+    
+    test('render number of events input', () => {
+        expect(NumberWrapper.find('.event-number__input')).toHaveLength(1);
     });
-
-    test('default value of input field is 32', async () => {
-        const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
-        expect(numberTextBox).toHaveValue("32");
+    
+    test('render 32 events when not specified by user', () => {
+        expect(NumberWrapper.state('eventNumber')).toBe(32);
     });
-
-    test('value changes when user types in textbox', async () => {
-        const user = userEvent.setup();
-        const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
-        await user.type(numberTextBox, "123")
-
-        expect(numberTextBox).toHaveValue("32123");
-
+    
+    test('change event number when number input is changed', () => {
+        const eventObject = { target: { value: 15 }};
+        NumberWrapper.find('.event-number__input').simulate('change', eventObject);
+    
+        expect(NumberWrapper.state('eventNumber')).toBe(15);
     });
-
 });
 
 describe('<NumberOfEvents /> integration', () => {
