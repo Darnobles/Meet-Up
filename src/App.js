@@ -12,21 +12,20 @@ const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
 
-  updateEvents = (location, eventCount) => {
-    const currentLocation = (location !== undefined) ? location: this.state.currentLocation;
-    const eventNumber = (eventCount !== undefined) ? eventCount : this.state.numberOfEvent;
-    getEvents().then((events) => {
-      let locationEvents = (currentLocation === 'all') ?
+  const updateEvents = async (location, eventCount) => {
+    const currentLocation = (location !== undefined) ? location: currentCity;
+    const eventNumber = (eventCount !== undefined) ? eventCount : currentNOE;
+
+    const events = await getEvents();
+    let locationEvents = (currentLocation === 'all') ?
         events :
         events.filter((event) => event.location === currentLocation);
-      locationEvents = locationEvents.slice(0, eventNumber);
+    locationEvents = locationEvents.slice(0, eventNumber);
+
+    setEvents(locationEvents);
+    setCurrentNOE(eventNumber);
+    setCurrentCity(currentLocation);
       
-      this.setState({
-        events: locationEvents,
-        numberOfEvents: eventNumber,
-        currentLocation
-      });
-    });
   };
 
   useEffect(() => {

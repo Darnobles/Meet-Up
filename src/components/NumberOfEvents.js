@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const NumberOfEvents = ({allLocations, setCurrentCity}) => {
+const NumberOfEvents = ({allLocations, setCurrentCity, updateEvents}) => {
 
     const [number, setNumber] = useState(32);
 
@@ -11,11 +11,9 @@ const NumberOfEvents = ({allLocations, setCurrentCity}) => {
 
     const handleInputChange = (event) => {
         const value = event.target.value;
-        this.setState({
-        eventNumber: value
-        });
-        this.props.updateEvents(undefined, value);
-        }
+        setNumber(value);
+        updateEvents(undefined,value);
+        };
 
     const handleNumberChange = (event) => {
         handleInputChanged(event);
