@@ -1,12 +1,20 @@
 import { useState } from 'react';
 
-const NumberOfEvents = ({allLocations, setCurrentCity, updateEvents}) => {
+const NumberOfEvents = ({allLocations, setCurrentCity, updateEvents, setErrorAlert}) => {
 
     const [number, setNumber] = useState(32);
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
         setNumber(value);
+
+        let ErrorAlert;
+      if (value <= 0 || value == "" ) {
+        ErrorAlert = "Please enter valid number"
+      } else {
+        ErrorAlert = ""
+      }
+      setErrorAlert(ErrorAlert);
     }
 
     const handleInputChange = (event) => {
