@@ -30,7 +30,7 @@ describe('<NumberOfEvents /> integration', () => {
 
     test('user can change the number of events displayed', async () => {
         const user = userEvent.setup();
-        const NumberOfEventsComponent = render(<NumberOfEvents />);
+        const NumberOfEventsComponent = render(<NumberOfEvents setErrorAlert={() => { }}/>);
         const AppDOM = AppComponent.container.firstChild;
     
         const CitySearchDOM = AppDOM.querySelector('#city-search');
