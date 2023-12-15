@@ -8,14 +8,16 @@ const NumberOfEvents = ({allLocations, setCurrentCity, updateEvents, setErrorAle
         const value = event.target.value;
         setNumber(value);
 
-        let ErrorAlert;
-      if (value <= 0 || value == "" ) {
-        ErrorAlert = "Please enter valid number"
+      let errorAlert;
+
+      if (isNaN(value) || parseInt(value) < 1 || parseInt(value) > 32) {
+        errorAlert = "Please enter a number between 1-32"
       } else {
-        ErrorAlert = ""
+        errorAlert = ""
       }
-      setErrorAlert(ErrorAlert);
-    }
+
+      setErrorAlert(errorAlert);
+    };
 
     const handleInputChange = (event) => {
         const value = event.target.value;

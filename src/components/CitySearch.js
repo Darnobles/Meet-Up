@@ -21,9 +21,9 @@ const CitySearch = ({allLocations, setCurrentCity, setInfoAlert}) => {
       let infoText;
       if (filteredLocations.length === 0) {
         infoText = "We can not find the city you are looking for. Please try another city"
-      } else {
-        infoText = ""
-      }
+        } else {
+          infoText = ""
+        }
       setInfoAlert(infoText);
     };
 
