@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Meet Up",
+  "name": "Meet Up",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,19 +9,25 @@
       "purpose": "maskable"
     },
     {
-      "src": "meet-app-144.png",
+      "src": "icon-192x192.png",
       "type": "image/png",
-      "sizes": "144x144",
+      "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "meet-app-192.png",
+      "src": "icon-256x256.png",
       "type": "image/png",
-      "sizes": "192x192",
+      "sizes": "256x256",
       "purpose": "maskable"
     },
     {
-      "src": "meet-app-512.png",
+      "src": "icon-384x384.png",
+      "type": "image/png",
+      "sizes": "384x384",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
