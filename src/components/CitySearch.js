@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import image from "../img/meet-up2.png"
 
 const CitySearch = ({allLocations, setCurrentCity, setInfoAlert}) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -37,6 +38,7 @@ const CitySearch = ({allLocations, setCurrentCity, setInfoAlert}) => {
 
     return (
       <div id="city-search">
+        <img src={image} height={200} width={200} style={{alignSelf:'center'}} />
       <input
         type="text"
         className="city"
