@@ -4,7 +4,7 @@ import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './App.css';
-import { InfoAlert, ErrorAlert } from './components/Alert';
+import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 
 const App = () => {
 
@@ -14,6 +14,7 @@ const App = () => {
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
+  const [warningAlert, setWarningAlert] = useState("");
 
   const updateEvents = async (location, eventCount) => {
     const currentLocation = (location !== undefined) ? location: currentCity;
@@ -32,6 +33,15 @@ const App = () => {
   };
 
   useEffect(() => {
+
+    let infoText = "";
+
+    if (navigator.onLine) {
+      infoText = "";
+    } else {
+      infoText = "App offline, displayed list has been loaded from the cache"
+    }
+    setWarningAlert(infoText);
     fetchData();
     // This will act like componentDidMount
 
@@ -56,17 +66,20 @@ const App = () => {
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
         {errorAlert.length !== 0 ? <ErrorAlert text={errorAlert}/> : null}
+        {warningAlert && !navigator.onLine ? <WarningAlert text={warningAlert}/> : null}
       </div>
       <CitySearch 
         allLocations={allLocations} 
         setCurrentCity={setCurrentCity} 
-        setInfoAlert={setInfoAlert}/>
+        setInfoAlert={setInfoAlert}
+        />
       <NumberOfEvents  
       allLocations={allLocations} 
       setCurrentCity={setCurrentCity} 
       events={events} 
       updateEvents={updateEvents}
-      setErrorAlert={setErrorAlert}/>
+      setErrorAlert={setErrorAlert}
+      />
       <EventList events={events} />
     </div>
   );
