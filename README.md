@@ -90,4 +90,4 @@ Scenario 1: Show a chart with the number of upcoming events in each city.
 
 ### Severless Functions in Meet-Up
 
-Severless functions will be used to obtian access tokens from the authorization server (Google OAuth Provider). Once the access code is granted and a request is made to the protected resoure (Google Calendar API) for information on events the events are then returned to the user.
+Serverless functions will be used to obtain access tokens from the authorization server (Google OAuth Provider). Once the access code is granted and a request is made to the protected resoure (Google Calendar API) for information on events the events are then returned to the user.
