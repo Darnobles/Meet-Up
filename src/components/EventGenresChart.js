@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ResponsiveContainer, PieChart, Pie, Legend } from 'recharts';
 
-const EventGenresChart = () => {
+const EventGenresChart = ({events}) => {
     const [data, setData] = useState([]);
 
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
@@ -26,10 +26,10 @@ const EventGenresChart = () => {
 
     useEffect(() => {
         setData(getData());
-      }, [`${events}`]);
+      }, [events]);
 
     const getData = () => {
-        const data = genres.map(genre => {
+        return genres.map(genre => {
             const filteredEvents = events.filter(event => event.summary.includes(genre));
             return {
                 name: genre,
