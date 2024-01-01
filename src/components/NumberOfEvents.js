@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-const NumberOfEvents = ({allLocations, setCurrentCity, updateEvents, setErrorAlert}) => {
+const NumberOfEvents = ({updateEvents, setErrorAlert}) => {
 
     const [number, setNumber] = useState(32);
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
-        setNumber(value);
+        setNumber(parseInt(value));
 
       let errorAlert;
 

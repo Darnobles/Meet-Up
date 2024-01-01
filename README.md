@@ -1,6 +1,10 @@
 # Meet-Up App
 
+_Meet-Up fetches data from the Google Calender API, allowing the user to see events in their area._
+
 _This application is designed to be a **progressive web application (PWA)** using **REACT** and following the **test-driven development (TDD)** technique to ensure the integrity and success of the app._
+
+![Alt text](pwa-screenshot.png)
 
 ### User Stories: _using Gherkin syntax ("Given-When-Then)_
 
