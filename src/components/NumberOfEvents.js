@@ -1,48 +1,35 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-const NumberOfEvents = ({updateEvents, setErrorAlert}) => {
+const NumberOfEvents = ({ updateEvents, setErrorAlert }) => {
+  const [number, setNumber] = useState(32);
 
-    const [number, setNumber] = useState(32);
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    setNumber(value);
 
-    const handleInputChanged = (event) => {
-        const value = event.target.value;
-        setNumber(parseInt(value));
+    let errorAlert = "";
+    const parsedValue = parseInt(value, 10);
 
-      let errorAlert;
+    if (isNaN(value) || parseInt(value) < 1 || parseInt(value) > 32) {
+      errorAlert = "Please enter a number between 1-32";
+    }
 
-      if (isNaN(value) || parseInt(value) < 1 || parseInt(value) > 32) {
-        errorAlert = "Please enter a number between 1-32"
-      } else {
-        errorAlert = ""
-      }
+    setErrorAlert(errorAlert);
+    updateEvents(undefined, value);
+  };
 
-      setErrorAlert(errorAlert);
-    };
-
-    const handleInputChange = (event) => {
-        const value = event.target.value;
-        setNumber(value);
-        updateEvents(undefined,value);
-        };
-
-    const handleNumberChange = (event) => {
-        handleInputChanged(event);
-        handleInputChange(event);
-    };
-
-    return(
-        <div>
-            <label htmlFor="number-of-events-input">Number of Events:</label>
-            <input
-             type="text"
-             id="number-of-events-input"
-             className="number-of-events-input"
-             value={number}
-             onChange={handleNumberChange}
-            />
-        </div>
-    )
-
-}
+  return (
+    <div>
+      <label htmlFor="number-of-events-input">Number of Events:</label>
+      <input
+        type="text"
+        id="number-of-events-input"
+        className="number-of-events-input"
+        value={number}
+        onChange={handleInputChange}
+      />
+    </div>
+  );
+};
 
 export default NumberOfEvents;
